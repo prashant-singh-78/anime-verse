@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Shinobi World Simulator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chakra-overlay"></div>
+    
+    <nav class="main-nav">
+        <div class="logo">SHINOBI<span>WORLD</span></div>
+        <ul class="nav-links">
+            <li><a href="#" data-target="explorer" class="active">Explorer</a></li>
+            <li><a href="#" data-target="simulator">Simulator</a></li>
+            <li><a href="#" data-target="analyzer">Analyzer</a></li>
+        </ul>
+    </nav>
+
+    <main id="app-container">
+        <!-- Module A: Village Explorer -->
+        <section id="module-explorer" class="module active">
+            <div class="container">
+                <header class="module-header">
+                    <h1>Village Explorer</h1>
+                    <p>Discover the Great Shinobi Nations</p>
+                </header>
+                <div class="world-map-container module-box">
+                    <div id="world-map" class="map-view">
+                        <!-- Markers will be injected by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Detail Panel -->
+            <div id="village-panel" class="side-panel">
+                <button class="close-panel">&times;</button>
+                <div class="panel-content">
+                    <!-- Content injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Module B: Fight Simulator -->
+        <section id="module-simulator" class="module">
+            <div class="container">
+                <header class="module-header">
+                    <h1>Fight Simulator</h1>
+                    <p>Master your Jutsu in the Arena</p>
+                </header>
+                
+                <div class="module-box" style="padding: 3rem; margin-bottom: 2rem;">
+                    <div id="character-selection" class="selection-grid">
+                        <!-- Character cards injected by JS -->
+                    </div>
+
+                    <div id="combat-arena" class="arena hidden">
+                        <div class="fighter-stats p1">
+                            <div class="avatar" id="p1-avatar"></div>
+                            <div class="health-container">
+                                <div class="health-bar" id="p1-hp"></div>
+                                <span class="hp-text">100/100</span>
+                            </div>
+                            <h3 id="p1-name">Naruto</h3>
+                        </div>
+
+                        <div class="vs-badge">VS</div>
+
+                        <div class="fighter-stats p2">
+                            <div class="avatar" id="p2-avatar"></div>
+                            <div class="health-container">
+                                <div class="health-bar" id="p2-hp"></div>
+                                <span class="hp-text">100/100</span>
+                            </div>
+                            <h3 id="p2-name">Sasuke</h3>
+                        </div>
+
+                        <div class="combat-controls">
+                            <button id="btn-attack" class="action-btn">Basic Attack</button>
+                            <button id="btn-special" class="action-btn special">Special Move</button>
+                            <button id="btn-reset" class="action-btn hidden">New Fight</button>
+                        </div>
+
+                        <div id="battle-log" class="battle-log">
+                            <p>Waiting for battle to begin...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module C: Personality Analyzer -->
+        <section id="module-analyzer" class="module">
+            <div class="container">
+                <header class="module-header">
+                    <h1>Personality Analyzer</h1>
+                    <p>Which Character Are You?</p>
+                </header>
+
+                <div id="quiz-container" class="module-box" style="position: relative; overflow: hidden;">
+                    <div id="droplet-overlay" class="droplet-container"></div>
+                    <div id="question-view">
+                        <div class="progress-bar-bg">
+                            <div id="quiz-progress" class="progress-bar"></div>
+                        </div>
+                        <h2 id="question-text">Loading question...</h2>
+                        <div id="answer-options" class="options-grid">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+
+                    <div id="result-view" class="hidden">
+                        <div class="result-card">
+                            <h3>You are...</h3>
+                            <h1 id="result-name">Ninja Name</h1>
+                            <p id="result-description">Detailed description goes here.</p>
+                            <div class="traits-container" id="result-traits"></div>
+                            <button id="btn-retake" class="action-btn">Retake Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="special-cut-in" class="special-cut-in hidden">
+        <div class="cut-in-content">
+            <div class="cut-in-image-container">
+                <img id="cut-in-image" src="" alt="Special Move">
+            </div>
+            <div class="cut-in-text">
+                <h2 id="cut-in-char-name">NAME</h2>
+                <h1 id="cut-in-move-name">SPECIAL MOVE</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
