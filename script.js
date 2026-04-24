@@ -454,7 +454,25 @@ function initVillageExplorer() {
     const panel = document.getElementById('village-panel');
     const closeBtn = panel.querySelector('.close-panel');
 
-    villages.forEach(village => {
+    // Create SVG layer for connections
+    const svgLayer = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgLayer.setAttribute("class", "map-connector");
+    svgLayer.setAttribute("viewBox", "0 0 100 100");
+    svgLayer.setAttribute("preserveAspectRatio", "none");
+    map.appendChild(svgLayer);
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    let pathData = "";
+
+    villages.forEach((village, index) => {
+        // Build the connecting line
+        const x = parseFloat(village.pos.left);
+        const y = parseFloat(village.pos.top);
+        
+        if (index === 0) pathData += `M ${x} ${y}`;
+        else pathData += ` L ${x} ${y}`;
+
+        // Create the marker
         const marker = document.createElement('div');
         marker.className = 'village-marker';
         marker.style.top = village.pos.top;
@@ -470,6 +488,11 @@ function initVillageExplorer() {
         marker.addEventListener('click', () => showVillageDetails(village));
         map.appendChild(marker);
     });
+
+    // Close the path to form a circuit
+    pathData += " Z";
+    path.setAttribute("d", pathData);
+    svgLayer.appendChild(path);
 
     closeBtn.addEventListener('click', () => panel.classList.remove('open'));
 }

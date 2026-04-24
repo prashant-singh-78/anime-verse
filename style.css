@@ -181,6 +181,39 @@ body {
     background-size: 40px 40px;
 }
 
+.village-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.map-connector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.map-connector path {
+    fill: none;
+    stroke: var(--chakra-blue);
+    stroke-width: 2;
+    stroke-dasharray: 8, 8;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 5px var(--chakra-blue));
+    animation: dashMove 20s linear infinite;
+}
+
+@keyframes dashMove {
+    from { stroke-dashoffset: 200; }
+    to { stroke-dashoffset: 0; }
+}
+
 .village-tag {
     background: rgba(0, 0, 0, 0.7);
     border: 1.5px solid var(--accent-color);
